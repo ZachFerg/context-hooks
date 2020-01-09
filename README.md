@@ -88,3 +88,21 @@ All we're doing is using the ```Consumer``` of the ```ThemeContext``` we created
 
 * **context type approach:** simpler way when using a class component
 * **context consumer approach:** Can be used in functional or class components. It can also consume multiple context in one component.
+
+## Lesson 6: Updating Context Data
+```javascript
+import React, { Component } from 'react';
+import { ThemeContext } from '../contexts/ThemeContext';
+
+class ThemeToggle extends Component {
+    static contextType = ThemeContext;
+    render() {
+        const { toggleTheme } = this.context; 
+        return ( 
+            <button onClick={toggleTheme}> Toggle Theme.</button>
+         );
+    }
+}
+export default ThemeToggle;
+```
+Creating a button that will allow us to update the context data (light or dark theme) from our components
