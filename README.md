@@ -106,3 +106,23 @@ class ThemeToggle extends Component {
 export default ThemeToggle;
 ```
 Creating a button that will allow us to update the context data (light or dark theme) from our components
+
+## Lesson 7: Creating Multiple Contexts
+
+Creating multiple contexts for different, un-releated data.
+
+```javascript
+function App() {
+  return (
+    <div className="App">
+      <ThemeContextProvider>
+        <AuthContextProvider>
+          <Navbar />
+          <BookList />
+          <ThemeToggle />
+        </AuthContextProvider>
+      </ThemeContextProvider>
+    </div>
+  );
+}
+```
