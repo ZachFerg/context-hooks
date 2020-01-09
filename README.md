@@ -57,3 +57,34 @@ const { isLightTheme, light, dark } = this.context;
 const theme = isLightTheme ? light : dark ;
 ```
 Everytime the state changes, anything consuming the context ```ThemeContext``` and takes in that value, that will update with a new value. Because that value is being updated in both BookList and Navbar, when ```isLightTheme``` is updated from true to false, the [ternary operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator) will be returning something different, Light when true or Dark when False.
+
+## Lesson 5: Accessing Context (part 2)
+> Another way of accessing our context data using a context consumer. This way can be used in both functional and class components.
+
+When creating a context, not only are you given a ```Provider```, you're also given a ```Consumer```
+
+```javascript
+return (
+    <ThemeContext.Consumer>{(context) => {
+        const { isLightTheme, light, dark } = context;
+        const theme = isLightTheme ? light : dark ;
+        return(
+            <nav style={{ background: theme.ui, color: theme.syntax}}>
+                <h1>Context App</h1>
+                <ul>
+                    <li>Home</li>
+                    <li>About</li>
+                    <li>Contact</li>
+                </ul>
+            </nav>
+        )
+    }} </ThemeContext.Consumer>
+);
+```
+
+All we're doing is using the ```Consumer``` of the ```ThemeContext``` we created. Inside that we're using a function which takes in that context object as a paraameter. Inside this function we have access to this context object, destructuring some information or constants from that context object and than we're setting the current theme.
+
+**After seeing two ways of using it, which one to use?**
+
+* **context type approach:** simpler way when using a class component
+* **context consumer approach:** Can be used in functional or class components. It can also consume multiple context in one component.
