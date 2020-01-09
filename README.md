@@ -48,3 +48,12 @@ If you ever are unsure wether you should use context, ask yourself: **Is the dat
 </div>
 ```
 When we surround the data using a context component, Navbar and Booklist are attached to the props of this component.
+
+## Lesson 4: Accessing Context (part 1)
+> Accessing our context data using the static property ```contextType```
+
+```javascript
+const { isLightTheme, light, dark } = this.context;
+const theme = isLightTheme ? light : dark ;
+```
+Everytime the state changes, anything consuming the context ```ThemeContext``` and takes in that value, that will update with a new value. Because that value is being updated in both BookList and Navbar, when ```isLightTheme``` is updated from true to false, the [ternary operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator) will be returning something different, Light when true or Dark when False.
