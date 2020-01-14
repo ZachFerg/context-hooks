@@ -144,9 +144,9 @@ render() {
                 return(
                     <nav style={{ background: theme.ui, color: theme.syntax}}>
                         <h1>Context App</h1>
-                        <div onClick={ toggleAuth }>
-                            { isAuthenticated ? 'Logged in' : 'Logged Out'}
-                        </div>
+                            <div onClick={ toggleAuth }>
+                                { isAuthenticated ? 'Logged in' : 'Logged Out'}
+                            </div>
                         <ul>
                             <li>Home</li>
                             <li>About</li>
@@ -160,7 +160,7 @@ render() {
 }
 ```
 
-## Lesson 8: Intro to Hooks
+## Lesson 9: Intro to Hooks
 
 Hooks are basically special functions
 Allows us to do additional things inside functional components
@@ -170,9 +170,39 @@ This doesn't mean that Class Components are obsolete. Using hooks are just a dif
 
 > ```useState()```
 Use state within a functional component.
-```useEffect()```
+
+> ```useEffect()```
 Run code when a component renders (or re-renders).
-```useContext()```
+
+> ```useContext()```
 Consume context in a functional component
 
 Set up a new project called ```hooksapp``` using ```npx create-react-app```
+
+## Lesson 10: useState Hook
+
+The useState hook allows us to use state in a functional component.
+
+```javascript
+const SongList = () => {
+  const [songs, setSongs] = useState([
+      { title: 'almost home', id: 1 },
+      { title: 'memory gospel', id: 2 },
+      { title: 'this wild darkness', id: 3 }
+    ]);
+    const addSong = () => {
+      setSongs([...songs, { title: 'new song', id: uuid() }]);
+    }
+    return ( 
+      <div className="song-list">
+          <ul>
+              songs.map(song => {
+                  return ( <li key={song.id}>{song.title}</li>)
+                })}
+          </ul>
+          <button onClick={addSong}>Add a song</button>
+      </div>
+  );
+}
+export default SongList;
+```
