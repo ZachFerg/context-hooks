@@ -126,3 +126,36 @@ function App() {
   );
 }
 ```
+
+## Lesson 8: Consuming Multiple Contexts
+
+Consuming multiple contexts in one single component.
+
+Using two ```Consumer``` Tags, nesting one inside the other.
+
+```javascript
+render() {
+    return (
+        <AuthContext.Consumer>{(AuthContext) => (
+            <ThemeContext.Consumer>{(themeContext) => {
+                const { isAuthenticated, toggleAuth } = AuthContext;
+                const { isLightTheme, light, dark } = themeContext;
+                const theme = isLightTheme ? light : dark ;
+                return(
+                    <nav style={{ background: theme.ui, color: theme.syntax}}>
+                        <h1>Context App</h1>
+                        <div onClick={ toggleAuth }>
+                            { isAuthenticated ? 'Logged in' : 'Logged Out'}
+                        </div>
+                        <ul>
+                            <li>Home</li>
+                            <li>About</li>
+                            <li>Contact</li>
+                        </ul>
+                    </nav>
+                )
+            }}</ThemeContext.Consumer>
+        )}</AuthContext.Consumer>
+    );
+}
+```
