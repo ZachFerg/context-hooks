@@ -294,3 +294,38 @@ export default Navbar;
 ```
 
 It's... beautiful.
+
+## Lesson 15: Creating Context with Functional Components
+
+*BookContext.js*
+```javascript
+export const BookContext = createContext();
+
+const BookContextProvider = (props) => {
+    const [books, setBooks] = useState([
+        {title: 'name of the wind', id: 1},
+        {title: 'the way of kings', id: 2},
+        {title: 'the final empire', id: 3},
+        {title: 'the hero of ages', id: 4}
+    ])
+    return ( 
+        <BookContext.Provider value={{books}}>
+            {props.children}
+        </BookContext.Provider>
+     );
+}
+ 
+export default BookContextProvider;
+```
+*BookList.js*
+```javascript
+div className='book-list' style={{color: theme.syntax, background: theme.bg}}>
+    <ul>
+        {books.map(book => {
+            return (
+                <li key={book.id} style={{ background: theme.ui }}> {book.title} </li>
+            )
+        })}
+    </ul>
+</div>
+```
