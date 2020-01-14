@@ -206,3 +206,31 @@ const SongList = () => {
 }
 export default SongList;
 ```
+## Lesson 11: useState with Forms
+```useState``` hook in conjunction with text input form fields to track what a user types into them.
+
+*NewSongForm.js*
+```javascript
+const NewSongForm = ({ addSong }) => {
+    const [title, setTitle] = useState('');
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        addSong(title);
+        setTitle('');
+    }
+    return ( 
+        <form onSubmit={handleSubmit}>
+            <label>Song name:</label>
+            <input type="text" value={title} required onChange={(e) => setTitle(e.target.value)} />
+            <input type="submit" value="add song" />
+        </form>
+     );
+}
+ 
+export default NewSongForm;
+```
+
+*SongList.js*
+```javascript
+<NewSongForm addSong={addSong} />
+```
