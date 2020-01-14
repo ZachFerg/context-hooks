@@ -234,3 +234,13 @@ export default NewSongForm;
 ```javascript
 <NewSongForm addSong={addSong} />
 ```
+
+## Lesson 12: useEffect Hook
+You can think of useEffect like a life cycle method used in a class component. When using a functional component we don't have access to those life cycle methods.
+You can use this hook to communicate with a database, hit an API endpoint, etc.
+
+```javascript
+useEffect(() => {
+    console.log('useEffect hook ran', songs);
+}, [songs])
+```
