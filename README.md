@@ -244,3 +244,25 @@ useEffect(() => {
     console.log('useEffect hook ran', songs);
 }, [songs])
 ```
+
+## Lesson 13: Hooks with Context
+
+Utilizing the ```useContext``` hook to use the context we created earlier in the series
+
+```javascript
+const BookList = () => {
+    const { isLightTheme, light, dark } = useContext(ThemeContext);
+    const theme = isLightTheme ? light : dark ;
+    return ( 
+        <div className='book-list' style={{color: theme.syntax, background: theme.bg}}>
+            <ul>
+                <li style={{ background: theme.ui }}>The way of kings</li>
+                <li style={{ background: theme.ui }}>The name of the wind</li>
+                <li style={{ background: theme.ui }}>The final Empire</li>
+            </ul>
+        </div>
+     );
+}
+```
+
+It looks much cleaner and is easier to read!
