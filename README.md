@@ -159,3 +159,20 @@ render() {
     );
 }
 ```
+
+## Lesson 8: Intro to Hooks
+
+Hooks are basically special functions
+Allows us to do additional things inside functional components
+* e.g. Use state
+
+This doesn't mean that Class Components are obsolete. Using hooks are just a different approach.
+
+> ```useState()```
+Use state within a functional component.
+```useEffect()```
+Run code when a component renders (or re-renders).
+```useContext()```
+Consume context in a functional component
+
+Set up a new project called ```hooksapp``` using ```npx create-react-app```
