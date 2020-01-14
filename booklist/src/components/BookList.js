@@ -12,9 +12,9 @@ const BookList = () => {
                 })}
             </ul>
         </div>
-     ) : (
+    ) : (
          <div className="empty"> No books to Read. Hello free time :) </div>
-     )
+    )
 }
  
 export default BookList;
