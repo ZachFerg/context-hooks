@@ -329,3 +329,35 @@ div className='book-list' style={{color: theme.syntax, background: theme.bg}}>
     </ul>
 </div>
 ```
+## Lesson 16-18: Building a Reading List App
+
+## Lession 19: Reducers, Actions & State
+
+What is a reducer?
+> Basically reducers are there to manage state in an application.
+ A reducer is a function which takes two arguments -- the current state and an action -- and returns based on both arguments a new state.
+
+ ```javascript
+ (state, action) => newState
+ ```
+
+ The reducer function is a pure function without any side-effects, which means that given the same input (e.g. state and action), the expected output (e.g. newState) will always be the same.
+
+ ## Lession 19: Adding a Reducer
+
+  ```javascript
+    export const bookReducer = (state, action) => {
+        switch(action.type) {
+            case 'ADD_BOOK':
+                return [...state, {
+                    title: action.book.title,
+                    author: action.book.author,
+                    id: uuid()
+                }]
+            case 'REMOVE_BOOK':
+                return state.filter(book => book.id !== action.id)
+            default:
+                return state
+        }
+    }
+ ```
